@@ -1,8 +1,12 @@
 .imgContainer {
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
   background-size: cover;
   background-image: url("../public/starwars.png");
+}
+
+.background {
+  background-color: black;
 }
 
 .strike {
