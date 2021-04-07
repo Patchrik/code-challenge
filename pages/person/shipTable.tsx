@@ -11,10 +11,12 @@ import {
 //components
 import Ship from "../components/ship";
 
+// data type
 type DataObject = {
   starships: Array<any>;
 };
 
+// ship interface
 interface ShipTableProps {
   data: DataObject;
   light: boolean;
@@ -22,6 +24,7 @@ interface ShipTableProps {
 }
 
 const ShipTable = ({ data, light, dataView }: ShipTableProps) => {
+  // return ship table
   return (
     <Grid
       item
@@ -35,6 +38,7 @@ const ShipTable = ({ data, light, dataView }: ShipTableProps) => {
     >
       <TableContainer>
         <Table stickyHeader>
+          {/* table header */}
           <TableHead>
             <TableRow>
               <TableCell>Name</TableCell>
@@ -49,6 +53,7 @@ const ShipTable = ({ data, light, dataView }: ShipTableProps) => {
             </TableRow>
           </TableHead>
 
+          {/* map over data / return table body */}
           {data?.starships?.map((ship: string) => {
             const shipUrlSections = ship.split("/").filter(Boolean);
             const shipId = shipUrlSections[shipUrlSections.length - 1];

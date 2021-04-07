@@ -11,11 +11,13 @@ import {
 //components
 import Vehicle from "../components/vehicle";
 
+// data type
 type DataObject = {
   vehicles: Array<any>;
 };
 
-interface FilmTableProps {
+// vehicle interface
+interface VehicleTableProps {
   data: DataObject;
   light: boolean;
   capitalizeFirstLetter: (value: string) => string;
@@ -27,7 +29,8 @@ const VehicleTable = ({
   light,
   capitalizeFirstLetter,
   dataView,
-}: FilmTableProps) => {
+}: VehicleTableProps) => {
+  // return vehicle table
   return (
     <Grid
       item
@@ -41,6 +44,7 @@ const VehicleTable = ({
     >
       <TableContainer>
         <Table stickyHeader>
+          {/* table header */}
           <TableHead>
             <TableRow>
               <TableCell>Name</TableCell>
@@ -55,6 +59,7 @@ const VehicleTable = ({
             </TableRow>
           </TableHead>
 
+          {/* map over data / return table body */}
           {data?.vehicles?.map((vehicle: string) => {
             const vehicleUrlSections = vehicle.split("/").filter(Boolean);
             const vehicleId = vehicleUrlSections[vehicleUrlSections.length - 1];

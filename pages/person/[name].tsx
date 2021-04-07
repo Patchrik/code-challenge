@@ -60,21 +60,27 @@ const PersonDetails = () => {
             </Grid>
           ) : (
             <>
-              <span
-                style={{
-                  color: light ? "blue" : "red",
-                  fontSize: "20px",
-                  fontWeight: "bold",
-                }}
-              >
-                Character Information
-              </span>
-              <PersonTable
-                data={data}
-                light={light}
-                capitalizeFirstLetter={capitalizeFirstLetter}
-                dataView={dataView}
-              />
+              {/* person table */}
+              {data && (
+                <>
+                  <span
+                    style={{
+                      color: light ? "blue" : "red",
+                      fontSize: "20px",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Character Information
+                  </span>
+                  <PersonTable
+                    data={data}
+                    light={light}
+                    capitalizeFirstLetter={capitalizeFirstLetter}
+                    dataView={dataView}
+                  />
+                </>
+              )}
+              {/* films table */}
               {data?.films?.length > 0 && (
                 <Grid
                   style={{
@@ -95,6 +101,7 @@ const PersonDetails = () => {
                   <FilmTable data={data} light={light} dataView={dataView} />
                 </Grid>
               )}
+              {/* starships table */}
               {data?.starships?.length > 0 && (
                 <Grid
                   style={{
@@ -115,6 +122,7 @@ const PersonDetails = () => {
                   <ShipTable data={data} light={light} dataView={dataView} />
                 </Grid>
               )}
+              {/* vehicles table */}
               {data?.vehicles?.length > 0 && (
                 <Grid
                   style={{

@@ -12,6 +12,7 @@ import {
 //components
 import Species from "../components/species";
 
+// data type
 type DataObject = {
   url: string;
   name: string;
@@ -24,6 +25,7 @@ type DataObject = {
   species: any[];
 };
 
+// person interface
 interface PersonTableProps {
   data: DataObject;
   light: boolean;
@@ -37,6 +39,7 @@ const PersonTable = ({
   capitalizeFirstLetter,
   dataView,
 }: PersonTableProps) => {
+  // return person table
   return (
     <Grid
       item
@@ -50,6 +53,7 @@ const PersonTable = ({
     >
       <TableContainer>
         <Table stickyHeader>
+          {/* table header */}
           <TableHead>
             <TableRow>
               <TableCell>Name</TableCell>
@@ -63,6 +67,7 @@ const PersonTable = ({
             </TableRow>
           </TableHead>
 
+          {/* table body */}
           <TableBody>
             <TableRow key={data?.url}>
               <TableCell>
@@ -94,6 +99,7 @@ const PersonTable = ({
                   ? capitalizeFirstLetter(data?.skin_color)
                   : "Unknown"}{" "}
               </TableCell>
+              {/* map over species if length > 0 */}
               {data?.species?.length === 0 ? (
                 <TableCell>Human</TableCell>
               ) : null}

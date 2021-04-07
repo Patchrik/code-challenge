@@ -11,10 +11,12 @@ import {
 //components
 import Film from "../components/film";
 
+// data type
 type DataObject = {
   films: Array<any>;
 };
 
+// film interface
 interface FilmTableProps {
   data: DataObject;
   light: boolean;
@@ -22,6 +24,7 @@ interface FilmTableProps {
 }
 
 const FilmTable = ({ data, light, dataView }: FilmTableProps) => {
+  // return film table
   return (
     <Grid
       item
@@ -35,6 +38,7 @@ const FilmTable = ({ data, light, dataView }: FilmTableProps) => {
     >
       <TableContainer>
         <Table stickyHeader>
+          {/* table header */}
           <TableHead>
             <TableRow>
               <TableCell>Title</TableCell>
@@ -45,6 +49,7 @@ const FilmTable = ({ data, light, dataView }: FilmTableProps) => {
             </TableRow>
           </TableHead>
 
+          {/* map over data / return table body */}
           {data?.films?.map((film: string) => {
             const filmUrlSections = film.split("/").filter(Boolean);
             const filmId = filmUrlSections[filmUrlSections.length - 1];
