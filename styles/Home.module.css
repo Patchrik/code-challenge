@@ -47,6 +47,10 @@
   animation: rotation 2s infinite linear;
 }
 
+.zIndex {
+  z-index: 10;
+}
+
 @keyframes rotation {
   from {
     transform: rotate(0deg);

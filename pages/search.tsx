@@ -40,10 +40,10 @@ const Search = ({ light, setSearch, status }: SearchProps) => {
         xs={6}
         style={{
           paddingLeft: "25px",
-          zIndex: "10",
         }}
         justify="flex-start"
         alignContent="flex-start"
+        className={styles?.zIndex}
       >
         <FormControl
           style={{ width: "100%", background: "white", borderRadius: "6px" }}
@@ -52,7 +52,7 @@ const Search = ({ light, setSearch, status }: SearchProps) => {
             type="input"
             name="characterSearch"
             variant="outlined"
-            placeholder="Seach for Star Wars Character..."
+            placeholder="Start Typing to Search for a Star Wars Character..."
             InputProps={{
               endAdornment: (
                 <InputAdornment
@@ -72,7 +72,8 @@ const Search = ({ light, setSearch, status }: SearchProps) => {
         direction="column"
         container
         xs={1}
-        style={{ paddingRight: "25px", zIndex: "10", color: "white" }}
+        style={{ paddingRight: "25px", color: "white" }}
+        className={styles?.zIndex}
       >
         <Grid direction="row" xs={12}>
           {status === "loading" && (
