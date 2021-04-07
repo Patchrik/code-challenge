@@ -50,6 +50,7 @@ const PersonDetails = () => {
           alignContent="center"
           xs={7}
           style={{ paddingLeft: "25px" }}
+          direction="row"
         >
           {status === "loading" ? (
             <Grid item direction="row" xs={12}>

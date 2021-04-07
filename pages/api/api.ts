@@ -1,5 +1,5 @@
 export const getSearchPerson = async (search: string) => {
-  return await fetch(`https://swapi.dev/api/people/?search=${search}`, {
+  return await fetch(`${process.env.SWAPI}/people/?search=${search}`, {
     method: 'GET',
   })
   .then((response) => {
@@ -18,7 +18,7 @@ export const getSearchPerson = async (search: string) => {
 }
 
 export const getPersonDetails = async (query: string, id: string, error: any) => {
-  return await fetch(`https://swapi.dev/api/${query}/${id}/`, {
+  return await fetch(`${process.env.SWAPI}/${query}/${id}/`, {
       method: "GET",
     })
       .then((response) => {

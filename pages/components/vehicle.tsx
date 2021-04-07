@@ -22,8 +22,6 @@ const Vehicle = ({ id, light, dataView, capitalizeFirstLetter }: ShipProps) => {
     getPersonDetails("vehicles", id, error)
   );
 
-  console.log({ data });
-
   return (
     <>
       {/* return loading or vehicle info */}
