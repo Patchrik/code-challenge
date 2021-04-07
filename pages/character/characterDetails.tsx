@@ -1,12 +1,15 @@
 import React from "react";
+import { useRouter } from "next/router";
 //third party
-import { Grid } from "@material-ui/core";
+import { Grid, Button } from "@material-ui/core";
 //styles
 import styles from "../../styles/Home.module.css";
 //components
-import Film from "./film";
-import Ship from "./ship";
-import Species from "./species";
+import Film from "../components/film";
+import Ship from "../components/ship";
+import Species from "../components/species";
+//context
+import { usePerson } from "../../context/personContext";
 
 // character interface
 interface CharacterDetailsProps {
@@ -15,10 +18,16 @@ interface CharacterDetailsProps {
 }
 
 const CharacterDetails = ({ light, data }: CharacterDetailsProps) => {
+  //define router
+  const router = useRouter();
+  // context defs
+  const { setPersonId } = usePerson();
   //capitalize first letter of string function
   const capitalizeFirstLetter = (value: string) => {
     return value.charAt(0).toUpperCase() + value.slice(1);
   };
+  //states
+  const [dataView, setDataView] = React.useState<string>("details");
 
   return (
     <Grid
@@ -37,6 +46,10 @@ const CharacterDetails = ({ light, data }: CharacterDetailsProps) => {
       {data &&
         // map over returned data
         data?.map((person: any) => {
+          //get personId
+          const personUrlSections = person?.url?.split("/").filter(Boolean);
+          const personId = personUrlSections[personUrlSections.length - 1];
+          setPersonId(personId);
           return (
             <>
               {/* person information */}
@@ -51,18 +64,64 @@ const CharacterDetails = ({ light, data }: CharacterDetailsProps) => {
                 <Grid
                   item
                   direction="column"
-                  xs={5}
-                  style={{ textAlign: "center", fontSize: "16px" }}
+                  xs={4}
+                  style={{
+                    textAlign: "center",
+                    fontSize: "16px",
+                    paddingTop: "5px",
+                  }}
                 >
                   {person?.name ? capitalizeFirstLetter(person?.name) : null}
                 </Grid>
                 <Grid
                   item
                   direction="column"
-                  xs={5}
-                  style={{ textAlign: "center", fontSize: "16px" }}
+                  xs={4}
+                  style={{
+                    textAlign: "center",
+                    fontSize: "16px",
+                    paddingTop: "5px",
+                  }}
                 >
                   Birth Year: {person?.birth_year ? person?.birth_year : null}
+                </Grid>
+                {/* more info btn */}
+                <Grid
+                  item
+                  direction="column"
+                  xs={4}
+                  style={{
+                    textAlign: "center",
+                    fontSize: "16px",
+                  }}
+                >
+                  {light ? (
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={() => {
+                        router?.push({
+                          pathname: `/person/[name]`,
+                          query: { name: person?.name },
+                        });
+                      }}
+                    >
+                      More Info
+                    </Button>
+                  ) : (
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      onClick={() => {
+                        router?.push({
+                          pathname: `/person/[name]`,
+                          query: { name: person?.name },
+                        });
+                      }}
+                    >
+                      More Info
+                    </Button>
+                  )}
                 </Grid>
               </Grid>
               <div className={styles?.strike}>
@@ -123,11 +182,17 @@ const CharacterDetails = ({ light, data }: CharacterDetailsProps) => {
                       .filter(Boolean);
                     const speciesId =
                       speciesUrlSection[speciesUrlSection.length - 1];
-                    return <Species id={speciesId} light={light} />;
+                    return (
+                      <Species
+                        id={speciesId}
+                        light={light}
+                        dataView={dataView}
+                      />
+                    );
                   })}
                 </Grid>
               </Grid>
-              {person?.films?.length > 0 && (
+              {person?.films?.length > 0 ? (
                 <>
                   <div className={styles?.strike}>
                     <span style={{ fontWeight: "bold" }}>Films</span>
@@ -162,14 +227,39 @@ const CharacterDetails = ({ light, data }: CharacterDetailsProps) => {
                             id={filmId}
                             light={light}
                             key={`Film-${filmId}`}
+                            dataView={dataView}
                           />
                         );
                       })}
                     </>
                   )}
                 </>
+              ) : (
+                <>
+                  <div className={styles?.strike}>
+                    <span style={{ fontWeight: "bold" }}>Films</span>
+                  </div>
+                  <Grid
+                    container
+                    direction="row"
+                    xs={12}
+                    justify="center"
+                    style={{
+                      fontWeight: "bold",
+                      fontSize: "14px",
+                      textAlign: "center",
+                    }}
+                  >
+                    <Grid item direction="column" xs={12}>
+                      {person?.name
+                        ? capitalizeFirstLetter(person?.name)
+                        : null}{" "}
+                      did not appear in any films.
+                    </Grid>
+                  </Grid>
+                </>
               )}
-              {person?.starships?.length > 0 && (
+              {person?.starships?.length > 0 ? (
                 <>
                   <div className={styles?.strike}>
                     <span style={{ fontWeight: "bold" }}>Starships Flown</span>
@@ -216,11 +306,36 @@ const CharacterDetails = ({ light, data }: CharacterDetailsProps) => {
                             id={shipId}
                             light={light}
                             key={`Ship-${shipId}`}
+                            dataView={dataView}
                           />
                         );
                       })}
                     </>
                   )}
+                </>
+              ) : (
+                <>
+                  <div className={styles?.strike}>
+                    <span style={{ fontWeight: "bold" }}>Starships Flown</span>
+                  </div>
+                  <Grid
+                    container
+                    direction="row"
+                    xs={12}
+                    justify="center"
+                    style={{
+                      fontWeight: "bold",
+                      fontSize: "14px",
+                      textAlign: "center",
+                    }}
+                  >
+                    <Grid item direction="column" xs={12}>
+                      {person?.name
+                        ? capitalizeFirstLetter(person?.name)
+                        : null}{" "}
+                      has no recorded starship.
+                    </Grid>
+                  </Grid>
                 </>
               )}
             </>

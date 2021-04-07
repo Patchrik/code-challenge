@@ -1,10 +1,11 @@
 import "../styles/globals.css";
 import React from "react";
+import type { AppProps } from "next/app";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import ContextProviders from "../context/index";
 import { QueryClient, QueryClientProvider } from "react-query";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: AppProps) {
   // define queryClient
   const queryClient = new QueryClient({
     defaultOptions: {

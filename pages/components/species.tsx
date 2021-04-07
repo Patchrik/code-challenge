@@ -1,6 +1,6 @@
 import React from "react";
 //third party
-import { Grid } from "@material-ui/core";
+import { Grid, TableCell } from "@material-ui/core";
 //api
 import { useQuery } from "react-query";
 import { getPersonDetails } from "../api/api";
@@ -12,14 +12,14 @@ import styles from "../../styles/Home.module.css";
 interface SpeciesProps {
   id: string;
   light: boolean;
+  dataView: string;
 }
 
-const Species = ({ id, light }: SpeciesProps) => {
+const Species = ({ id, light, dataView }: SpeciesProps) => {
   // get species query
   const { data, status, error } = useQuery(`species-${id}`, () =>
     getPersonDetails("species", id, error)
   );
-
   return (
     <>
       {/* return loading or species info */}
@@ -36,11 +36,13 @@ const Species = ({ id, light }: SpeciesProps) => {
             style={{ color: light ? "blue" : "red" }}
           />
         </Grid>
-      ) : (
+      ) : dataView === "details" ? (
         <Grid container direction="row" xs={12} key={data?.id}>
           <span style={{ fontWeight: "bold" }}>Species:&nbsp;</span>{" "}
           {data?.name ? data?.name : "Human"}
         </Grid>
+      ) : (
+        <TableCell>{data?.name ? data?.name : "Human"}</TableCell>
       )}
     </>
   );

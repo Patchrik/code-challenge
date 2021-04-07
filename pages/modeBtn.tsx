@@ -15,7 +15,13 @@ const ModeBtn = ({ light, setLight }: ModeProps) => {
       direction="column"
       container
       xs={5}
-      style={{ paddingRight: "25px", zIndex: "10" }}
+      style={{
+        paddingRight: "25px",
+        zIndex: "10",
+        position: "absolute",
+        top: "25px",
+        right: "5px",
+      }}
       justify="flex-end"
       alignContent="flex-end"
     >

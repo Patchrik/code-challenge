@@ -1,5 +1,4 @@
 import React from "react";
-import Head from "next/head";
 //context
 import { useTheme } from "../context/themeContext";
 //components

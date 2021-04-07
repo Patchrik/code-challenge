@@ -1,6 +1,7 @@
 import React from "react";
 //third party
-import { Grid } from "@material-ui/core";
+import { Grid, TableBody, TableCell } from "@material-ui/core";
+import moment from "moment";
 //api
 import { useQuery } from "react-query";
 import { getPersonDetails } from "../api/api";
@@ -12,9 +13,10 @@ import styles from "../../styles/Home.module.css";
 interface FilmProps {
   id: string;
   light: boolean;
+  dataView: string;
 }
 
-const Film = ({ id, light }: FilmProps) => {
+const Film = ({ id, light, dataView }: FilmProps) => {
   // get films query
   const { data, status, error } = useQuery(`film-${id}`, () =>
     getPersonDetails("films", id, error)
@@ -36,7 +38,7 @@ const Film = ({ id, light }: FilmProps) => {
             style={{ color: light ? "blue" : "red" }}
           />
         </Grid>
-      ) : (
+      ) : dataView === "details" ? (
         <Grid
           container
           direction="row"
@@ -52,6 +54,20 @@ const Film = ({ id, light }: FilmProps) => {
             {data?.director ? data?.director : null}
           </Grid>
         </Grid>
+      ) : (
+        <TableBody>
+          <TableCell>{data?.title ? data?.title : "Unknown"}</TableCell>
+          <TableCell>{data?.director ? data?.director : "Unknown"}</TableCell>
+          <TableCell>{data?.producer ? data?.producer : "Unknown"}</TableCell>
+          <TableCell>
+            {data?.release_date
+              ? moment(data?.release_date).format("MM/DD/YYYY")
+              : "Unknown"}
+          </TableCell>
+          <TableCell>
+            {data?.episode_id ? data?.episode_id : "Unknown"}
+          </TableCell>
+        </TableBody>
       )}
     </>
   );
