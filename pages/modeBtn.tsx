@@ -10,7 +10,7 @@ import styles from "../styles/Home.module.css";
 interface ModeProps {
   light: boolean;
   setLight: (value: boolean) => void;
-  dataView: string;
+  dataView?: string;
 }
 
 const ModeBtn = ({ light, setLight, dataView }: ModeProps) => {
