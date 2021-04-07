@@ -11,11 +11,27 @@ import Species from "../components/species";
 //context
 import { usePerson } from "../../context/personContext";
 
-// character interface
+//interface
 interface CharacterDetailsProps {
   light: boolean;
   data: any[];
 }
+
+//types
+type PersonObject = {
+  url: string;
+  name: string;
+  birth_year: string;
+  gender: string;
+  height: string;
+  mass: string;
+  skin_color: string;
+  hair_color: string;
+  eye_color: string;
+  species: any[];
+  films: any[];
+  starships: any[];
+};
 
 const CharacterDetails = ({ light, data }: CharacterDetailsProps) => {
   //define router
@@ -27,31 +43,32 @@ const CharacterDetails = ({ light, data }: CharacterDetailsProps) => {
     return value.charAt(0).toUpperCase() + value.slice(1);
   };
   //states
-  const [dataView, setDataView] = React.useState<string>("details");
+  const [dataView] = React.useState<string>("details");
 
   return (
-    <Grid
-      direction="column"
-      xs={5}
-      item
-      style={{
-        border: light ? "2px solid blue" : "2px solid red",
-        borderRadius: "6px",
-        backgroundColor: "white",
-        paddingLeft: "10px",
-        paddingRight: "10px",
-        paddingBottom: "25px",
-      }}
-    >
+    <Grid direction="column" xs={5} item style={{}}>
       {data &&
         // map over returned data
-        data?.map((person: any) => {
+        data.map((person: PersonObject) => {
           //get personId
-          const personUrlSections = person?.url?.split("/").filter(Boolean);
+          const personUrlSections = person?.url.split("/").filter(Boolean);
           const personId = personUrlSections[personUrlSections.length - 1];
           setPersonId(personId);
           return (
-            <>
+            <Grid
+              container
+              direction="column"
+              style={{
+                border: light ? "2px solid blue" : "2px solid red",
+                borderRadius: "6px",
+                backgroundColor: "white",
+                paddingLeft: "10px",
+                paddingRight: "10px",
+                paddingBottom: "25px",
+                marginTop: "25px",
+                marginBottom: "25px",
+              }}
+            >
               {/* person information */}
               <Grid
                 direction="row"
@@ -59,7 +76,7 @@ const CharacterDetails = ({ light, data }: CharacterDetailsProps) => {
                 xs={12}
                 style={{ fontWeight: "bold", paddingTop: "10px" }}
                 justify="center"
-                key={person?.id}
+                key={person?.url}
               >
                 <Grid
                   item
@@ -144,11 +161,11 @@ const CharacterDetails = ({ light, data }: CharacterDetailsProps) => {
                 </Grid>
                 <Grid item direction="row" xs={12}>
                   <span style={{ fontWeight: "bold" }}>Height:</span>{" "}
-                  {person?.height ? person?.height : null}
+                  {person?.height ? `${person?.height} in` : null}
                 </Grid>
                 <Grid item direction="row" xs={12}>
                   <span style={{ fontWeight: "bold" }}>Weight:</span>{" "}
-                  {person?.mass ? person?.mass : null}
+                  {person?.mass ? `${person?.mass} lbs` : null}
                 </Grid>
                 <Grid item direction="row" xs={12}>
                   <span style={{ fontWeight: "bold" }}>Skin Color:</span>{" "}
@@ -176,10 +193,8 @@ const CharacterDetails = ({ light, data }: CharacterDetailsProps) => {
                     </>
                   ) : null}
                   {/* maps over species component */}
-                  {person?.species?.map((specie: string) => {
-                    const speciesUrlSection = specie
-                      ?.split("/")
-                      .filter(Boolean);
+                  {person?.species.map((specie: string) => {
+                    const speciesUrlSection = specie.split("/").filter(Boolean);
                     const speciesId =
                       speciesUrlSection[speciesUrlSection.length - 1];
                     return (
@@ -218,7 +233,7 @@ const CharacterDetails = ({ light, data }: CharacterDetailsProps) => {
                         </Grid>
                       </Grid>
                       {/* maps over film component */}
-                      {person?.films?.map((film: string) => {
+                      {person?.films.map((film: string) => {
                         const filmUrlSections = film.split("/").filter(Boolean);
                         const filmId =
                           filmUrlSections[filmUrlSections.length - 1];
@@ -297,7 +312,7 @@ const CharacterDetails = ({ light, data }: CharacterDetailsProps) => {
                         </Grid>
                       </Grid>
                       {/* map over starships component */}
-                      {person?.starships?.map((ship: string) => {
+                      {person?.starships.map((ship: string) => {
                         const shipUrlSections = ship.split("/").filter(Boolean);
                         const shipId =
                           shipUrlSections[shipUrlSections.length - 1];
@@ -333,12 +348,12 @@ const CharacterDetails = ({ light, data }: CharacterDetailsProps) => {
                       {person?.name
                         ? capitalizeFirstLetter(person?.name)
                         : null}{" "}
-                      has no recorded starship.
+                      has no recorded starship(s).
                     </Grid>
                   </Grid>
                 </>
               )}
-            </>
+            </Grid>
           );
         })}
     </Grid>

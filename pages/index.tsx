@@ -43,7 +43,11 @@ const Home = () => {
           container
           justify="flex-start"
           alignContent="center"
-          style={{ paddingTop: "50px", paddingLeft: "50px" }}
+          style={{
+            paddingTop: "50px",
+            paddingLeft: "50px",
+            paddingBottom: "50px",
+          }}
         >
           <CharacterDetails light={light} data={data} />
         </Grid>

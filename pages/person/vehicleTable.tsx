@@ -60,7 +60,7 @@ const VehicleTable = ({
           </TableHead>
 
           {/* map over data / return table body */}
-          {data?.vehicles?.map((vehicle: string) => {
+          {data?.vehicles.map((vehicle: string) => {
             const vehicleUrlSections = vehicle.split("/").filter(Boolean);
             const vehicleId = vehicleUrlSections[vehicleUrlSections.length - 1];
             return (

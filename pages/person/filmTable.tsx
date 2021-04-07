@@ -50,7 +50,7 @@ const FilmTable = ({ data, light, dataView }: FilmTableProps) => {
           </TableHead>
 
           {/* map over data / return table body */}
-          {data?.films?.map((film: string) => {
+          {data?.films.map((film: string) => {
             const filmUrlSections = film.split("/").filter(Boolean);
             const filmId = filmUrlSections[filmUrlSections.length - 1];
             return (

@@ -104,8 +104,8 @@ const PersonTable = ({
                 <TableCell>Human</TableCell>
               ) : null}
               {data?.species?.length > 0 &&
-                data?.species?.map((specie: any) => {
-                  const speciesUrlSection = specie?.split("/").filter(Boolean);
+                data?.species.map((specie: any) => {
+                  const speciesUrlSection = specie.split("/").filter(Boolean);
                   const speciesId =
                     speciesUrlSection[speciesUrlSection.length - 1];
                   return (

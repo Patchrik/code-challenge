@@ -7,6 +7,7 @@ import { getPersonDetails } from "../api/api";
 //styled
 import CachedIcon from "@material-ui/icons/Cached";
 import styles from "../../styles/Home.module.css";
+import { Type } from "typescript";
 
 // species interface
 interface SpeciesProps {
