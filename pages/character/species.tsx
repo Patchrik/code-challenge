@@ -38,7 +38,7 @@ const Species = ({ id, light }: SpeciesProps) => {
         </Grid>
       ) : (
         <Grid container direction="row" xs={12} key={data?.id}>
-          <span style={{ fontWeight: "bold" }}>Species: </span>{" "}
+          <span style={{ fontWeight: "bold" }}>Species:&nbsp;</span>{" "}
           {data?.name ? data?.name : "Human"}
         </Grid>
       )}
