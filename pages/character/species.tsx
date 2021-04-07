@@ -7,22 +7,22 @@ import { getPersonDetails } from "../api/api";
 //styled
 import CachedIcon from "@material-ui/icons/Cached";
 import styles from "../../styles/Home.module.css";
-import { stat } from "fs";
 
+// species interface
 interface SpeciesProps {
   id: string;
   light: boolean;
 }
 
 const Species = ({ id, light }: SpeciesProps) => {
+  // get species query
   const { data, status, error } = useQuery(`species-${id}`, () =>
     getPersonDetails("species", id, error)
   );
 
-  console.log({ data });
-
   return (
     <>
+      {/* return loading or species info */}
       {status === "loading" ? (
         <Grid
           container

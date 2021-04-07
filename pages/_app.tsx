@@ -5,6 +5,7 @@ import ContextProviders from "../context/index";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 function MyApp({ Component, pageProps }) {
+  // define queryClient
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
@@ -14,6 +15,7 @@ function MyApp({ Component, pageProps }) {
   });
 
   return (
+    // set up clients/app
     <QueryClientProvider client={queryClient}>
       <ContextProviders>
         <CssBaseline />

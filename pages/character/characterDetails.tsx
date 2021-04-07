@@ -8,12 +8,14 @@ import Film from "./film";
 import Ship from "./ship";
 import Species from "./species";
 
+// character interface
 interface CharacterDetailsProps {
   light: boolean;
   data: any[];
 }
 
 const CharacterDetails = ({ light, data }: CharacterDetailsProps) => {
+  //capitalize first letter of string function
   const capitalizeFirstLetter = (value: string) => {
     return value.charAt(0).toUpperCase() + value.slice(1);
   };
@@ -33,10 +35,11 @@ const CharacterDetails = ({ light, data }: CharacterDetailsProps) => {
       }}
     >
       {data &&
+        // map over returned data
         data?.map((person: any) => {
-          console.log({ person });
           return (
             <>
+              {/* person information */}
               <Grid
                 direction="row"
                 container
@@ -113,6 +116,7 @@ const CharacterDetails = ({ light, data }: CharacterDetailsProps) => {
                       <span> Human</span>
                     </>
                   ) : null}
+                  {/* maps over species component */}
                   {person?.species?.map((specie: string) => {
                     const speciesUrlSection = specie
                       ?.split("/")
@@ -148,6 +152,7 @@ const CharacterDetails = ({ light, data }: CharacterDetailsProps) => {
                           Director
                         </Grid>
                       </Grid>
+                      {/* maps over film component */}
                       {person?.films?.map((film: string) => {
                         const filmUrlSections = film.split("/").filter(Boolean);
                         const filmId =
@@ -201,6 +206,7 @@ const CharacterDetails = ({ light, data }: CharacterDetailsProps) => {
                           Class
                         </Grid>
                       </Grid>
+                      {/* map over starships component */}
                       {person?.starships?.map((ship: string) => {
                         const shipUrlSections = ship.split("/").filter(Boolean);
                         const shipId =

@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 //context
 import { useTheme } from "../context/themeContext";
 //components
@@ -25,8 +26,6 @@ const Home = () => {
       enabled: !!search,
     }
   );
-
-  // console.log({ data });
 
   // return if error
   if (error) return "An error has occurred: " + error.message;

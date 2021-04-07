@@ -8,18 +8,21 @@ import { getPersonDetails } from "../api/api";
 import CachedIcon from "@material-ui/icons/Cached";
 import styles from "../../styles/Home.module.css";
 
+// film interface
 interface FilmProps {
   id: string;
   light: boolean;
 }
 
 const Film = ({ id, light }: FilmProps) => {
+  // get films query
   const { data, status, error } = useQuery(`film-${id}`, () =>
     getPersonDetails("films", id, error)
   );
 
   return (
     <>
+      {/* return loading or film info */}
       {status === "loading" ? (
         <Grid
           container

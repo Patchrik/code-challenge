@@ -8,18 +8,21 @@ import { getPersonDetails } from "../api/api";
 import CachedIcon from "@material-ui/icons/Cached";
 import styles from "../../styles/Home.module.css";
 
+// ships interface
 interface ShipProps {
   id: string;
   light: boolean;
 }
 
 const Ship = ({ id, light }: ShipProps) => {
+  // get ships query
   const { data, status, error } = useQuery(`ship-${id}`, () =>
     getPersonDetails("starships", id, error)
   );
 
   return (
     <>
+      {/* return loading or ship info */}
       {status === "loading" ? (
         <Grid
           container
