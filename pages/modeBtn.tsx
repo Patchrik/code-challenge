@@ -64,7 +64,7 @@ const ModeBtn = ({ light, setLight, dataView }: ModeProps) => {
                 });
               }}
             >
-              <Home />
+              <Home /> Home
             </Button>
           ) : (
             <Button
@@ -76,7 +76,7 @@ const ModeBtn = ({ light, setLight, dataView }: ModeProps) => {
                 });
               }}
             >
-              <Home />
+              <Home /> Home
             </Button>
           )}
         </Grid>
