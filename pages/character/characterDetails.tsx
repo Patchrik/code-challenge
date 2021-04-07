@@ -117,7 +117,7 @@ const CharacterDetails = ({ light, data }: CharacterDetailsProps) => {
                       variant="contained"
                       color="primary"
                       onClick={() => {
-                        router?.push({
+                        router.push({
                           pathname: `/person/[name]`,
                           query: { name: person?.name },
                         });
@@ -130,7 +130,7 @@ const CharacterDetails = ({ light, data }: CharacterDetailsProps) => {
                       variant="contained"
                       color="secondary"
                       onClick={() => {
-                        router?.push({
+                        router.push({
                           pathname: `/person/[name]`,
                           query: { name: person?.name },
                         });

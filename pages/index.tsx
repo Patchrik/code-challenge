@@ -5,6 +5,7 @@ import { useTheme } from "../context/themeContext";
 import Search from "./search";
 import ModeBtn from "./modeBtn";
 import CharacterDetails from "./character/characterDetails";
+import StarText from "./starText";
 //third party
 import { Grid } from "@material-ui/core";
 //styles
@@ -50,6 +51,11 @@ const Home = () => {
           }}
         >
           <CharacterDetails light={light} data={data} />
+        </Grid>
+      )}
+      {!data && (
+        <Grid direction="row" container justify="center" alignContent="center">
+          <StarText />
         </Grid>
       )}
     </div>

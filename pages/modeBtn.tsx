@@ -59,7 +59,7 @@ const ModeBtn = ({ light, setLight, dataView }: ModeProps) => {
               color="primary"
               variant="contained"
               onClick={() => {
-                router?.push({
+                router.push({
                   pathname: `/`,
                 });
               }}
@@ -71,7 +71,7 @@ const ModeBtn = ({ light, setLight, dataView }: ModeProps) => {
               color="secondary"
               variant="contained"
               onClick={() => {
-                router?.push({
+                router.push({
                   pathname: `/`,
                 });
               }}
