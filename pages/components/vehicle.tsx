@@ -14,8 +14,8 @@ interface ShipProps {
   light: boolean;
   dataView: string;
   capitalizeFirstLetter: (value: string) => string;
-  StyledTableCell: any;
-  StyledTableRow: any;
+  StyledTableCell?: any;
+  StyledTableRow?: any;
 }
 
 const Vehicle = ({
