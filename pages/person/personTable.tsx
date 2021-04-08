@@ -38,13 +38,34 @@ interface PersonTableProps {
   StyledTableRow?: any;
 }
 
+//custom styled table cells
+const StyledTableCell = withStyles((theme: Theme) =>
+  createStyles({
+    head: {
+      backgroundColor: theme?.palette?.action?.hover,
+    },
+    body: {
+      fontSize: 14,
+    },
+  })
+)(TableCell);
+
+//custom styled table rows
+const StyledTableRow = withStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      "&:nth-of-type(even)": {
+        backgroundColor: theme?.palette?.action?.hover,
+      },
+    },
+  })
+)(TableRow);
+
 const PersonTable = ({
   data,
   light,
   capitalizeFirstLetter,
   dataView,
-  StyledTableCell,
-  StyledTableRow,
 }: PersonTableProps) => {
   // return person table
   return (

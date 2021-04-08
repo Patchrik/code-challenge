@@ -6,6 +6,10 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  withStyles,
+  Theme,
+  createStyles,
+  TableCell,
 } from "@material-ui/core";
 //components
 import Ship from "../components/ship";
@@ -20,17 +24,32 @@ interface ShipTableProps {
   data: DataObject;
   light: boolean;
   dataView: string;
-  StyledTableCell?: any;
-  StyledTableRow?: any;
 }
 
-const ShipTable = ({
-  data,
-  light,
-  dataView,
-  StyledTableCell,
-  StyledTableRow,
-}: ShipTableProps) => {
+//custom styled table cells
+const StyledTableCell = withStyles((theme: Theme) =>
+  createStyles({
+    head: {
+      backgroundColor: theme?.palette?.action?.hover,
+    },
+    body: {
+      fontSize: 14,
+    },
+  })
+)(TableCell);
+
+//custom styled table rows
+const StyledTableRow = withStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      "&:nth-of-type(even)": {
+        backgroundColor: theme?.palette?.action?.hover,
+      },
+    },
+  })
+)(TableRow);
+
+const ShipTable = ({ data, light, dataView }: ShipTableProps) => {
   // return ship table
   return (
     <Grid

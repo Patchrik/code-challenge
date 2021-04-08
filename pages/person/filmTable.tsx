@@ -6,6 +6,10 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  withStyles,
+  Theme,
+  createStyles,
+  TableCell,
 } from "@material-ui/core";
 //components
 import Film from "../components/film";
@@ -20,17 +24,32 @@ interface FilmTableProps {
   data: DataObject;
   light: boolean;
   dataView: string;
-  StyledTableCell?: any;
-  StyledTableRow?: any;
 }
 
-const FilmTable = ({
-  data,
-  light,
-  dataView,
-  StyledTableCell,
-  StyledTableRow,
-}: FilmTableProps) => {
+//custom styled table cells
+const StyledTableCell = withStyles((theme: Theme) =>
+  createStyles({
+    head: {
+      backgroundColor: theme?.palette?.action?.hover,
+    },
+    body: {
+      fontSize: 14,
+    },
+  })
+)(TableCell);
+
+//custom styled table rows
+const StyledTableRow = withStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      "&:nth-of-type(even)": {
+        backgroundColor: theme?.palette?.action?.hover,
+      },
+    },
+  })
+)(TableRow);
+
+const FilmTable = ({ data, light, dataView }: FilmTableProps) => {
   // return film table
   return (
     <Grid

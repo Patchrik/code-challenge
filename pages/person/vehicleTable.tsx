@@ -6,7 +6,6 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  TableRow,
   withStyles,
   Theme,
   createStyles,
