@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { useRouter } from "next/router";
 //third party
 import { Grid, Button } from "@material-ui/core";
@@ -19,13 +19,13 @@ interface ModeProps {
   dataView?: string;
   personData?: PersonDataType;
   personToggle?: boolean;
-  setPersonToggle?: (value: boolean) => Promise<void>;
+  setPersonToggle?: Dispatch<SetStateAction<boolean>>;
   filmToggle?: boolean;
-  setFilmToggle?: (value: boolean) => Promise<void>;
+  setFilmToggle?: Dispatch<SetStateAction<boolean>>;
   shipToggle?: boolean;
-  setShipToggle?: (value: boolean) => Promise<void>;
+  setShipToggle?: Dispatch<SetStateAction<boolean>>;
   vehicleToggle?: boolean;
-  setVehicleToggle?: (value: boolean) => Promise<void>;
+  setVehicleToggle?: Dispatch<SetStateAction<boolean>>;
 }
 
 //types
