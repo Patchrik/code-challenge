@@ -45,32 +45,32 @@ const Search = ({ light, setSearch, status }: SearchProps) => {
         alignContent="flex-start"
         className={styles?.zIndex}
       >
-        <FormControl
+        {/* <FormControl
           style={{
             width: "100%",
             background: "white",
             borderRadius: "6px",
             border: light ? "2px solid blue" : "2px solid red",
           }}
-        >
-          <TextField
+        > */}
+        {/* <TextField
             type="input"
             name="characterSearch"
             variant="outlined"
             placeholder="Start Typing to Search for a Star Wars Character..."
-            // InputProps={{
-            //   endAdornment: (
-            //     <InputAdornment
-            //       position="end"
-            //       style={{ color: light ? "blue" : "red" }}
-            //     >
-            //       <SearchIcon />
-            //     </InputAdornment>
-            //   ),
-            // }}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment
+                  position="end"
+                  style={{ color: light ? "blue" : "red" }}
+                >
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+            }}
             onChange={(event) => handleCharacterSearch(event?.target?.value)}
           />
-        </FormControl>
+        </FormControl> */}
       </Grid>
       {/* custom loading icon */}
       <Grid
