@@ -53,7 +53,7 @@ const Search = ({ light, setSearch, status }: SearchProps) => {
             border: light ? "2px solid blue" : "2px solid red",
           }}
         >
-          {/* <TextField
+          <TextField
             type="input"
             name="characterSearch"
             variant="outlined"
@@ -69,7 +69,7 @@ const Search = ({ light, setSearch, status }: SearchProps) => {
               ),
             }}
             onChange={(event) => handleCharacterSearch(event?.target?.value)}
-          /> */}
+          />
         </FormControl>
       </Grid>
       {/* custom loading icon */}
