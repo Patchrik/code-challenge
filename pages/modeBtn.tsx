@@ -18,14 +18,14 @@ interface ModeProps {
   setLight: (value: boolean) => void;
   dataView?: string;
   personData?: PersonDataType;
-  personToggle: boolean;
-  setPersonToggle: (value: boolean) => Promise<void>;
-  filmToggle: boolean;
-  setFilmToggle: (value: boolean) => Promise<void>;
-  shipToggle: boolean;
-  setShipToggle: (value: boolean) => Promise<void>;
-  vehicleToggle: boolean;
-  setVehicleToggle: (value: boolean) => Promise<void>;
+  personToggle?: boolean;
+  setPersonToggle?: (value: boolean) => Promise<void>;
+  filmToggle?: boolean;
+  setFilmToggle?: (value: boolean) => Promise<void>;
+  shipToggle?: boolean;
+  setShipToggle?: (value: boolean) => Promise<void>;
+  vehicleToggle?: boolean;
+  setVehicleToggle?: (value: boolean) => Promise<void>;
 }
 
 //types
