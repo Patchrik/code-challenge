@@ -53,16 +53,16 @@ const Search = ({ light, setSearch, status }: SearchProps) => {
             name="characterSearch"
             variant="outlined"
             placeholder="Start Typing to Search for a Star Wars Character..."
-            InputProps={{
-              endAdornment: (
-                <InputAdornment
-                  position="end"
-                  style={{ color: light ? "blue" : "red" }}
-                >
-                  <SearchIcon />
-                </InputAdornment>
-              ),
-            }}
+            // InputProps={{
+            //   endAdornment: (
+            //     <InputAdornment
+            //       position="end"
+            //       style={{ color: light ? "blue" : "red" }}
+            //     >
+            //       <SearchIcon />
+            //     </InputAdornment>
+            //   ),
+            // }}
             onChange={(event) => handleCharacterSearch(event?.target?.value)}
           />
         </FormControl>
