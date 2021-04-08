@@ -18,20 +18,20 @@ const StarText = () => {
             Start searching by typing the name of your favorite Star Wars
             character in the search bar located in the top left.
           </p>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
           <Grid direction="row">
             <ArrowBackIcon style={{ fontSize: "70px" }} />
             Seriously, it's right there.
           </Grid>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
           <br />
           <br />
           <br />

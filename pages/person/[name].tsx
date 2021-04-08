@@ -50,7 +50,13 @@ const StyledTableRow = withStyles((theme: Theme) =>
 const PersonDetails = () => {
   //define contexts
   const { light, setLight } = useTheme();
-  const { personId } = usePerson();
+  const {
+    personId,
+    personToggle,
+    filmToggle,
+    shipToggle,
+    vehicleToggle,
+  } = usePerson();
   const [dataView] = React.useState<string>("table");
 
   //person query
@@ -92,113 +98,134 @@ const PersonDetails = () => {
           ) : (
             <>
               {/* person table */}
-              {data && (
+              {!personToggle && (
                 <>
-                  <span
-                    style={{
-                      color: light ? "blue" : "red",
-                      fontSize: "20px",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    Character Information
-                  </span>
-                  <PersonTable
-                    data={data}
-                    light={light}
-                    capitalizeFirstLetter={capitalizeFirstLetter}
-                    dataView={dataView}
-                    StyledTableCell={StyledTableCell}
-                    StyledTableRow={StyledTableRow}
-                  />
+                  {data && (
+                    <>
+                      <span
+                        style={{
+                          color: light ? "blue" : "red",
+                          fontSize: "20px",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        Character Information
+                      </span>
+                      <PersonTable
+                        data={data}
+                        light={light}
+                        capitalizeFirstLetter={capitalizeFirstLetter}
+                        dataView={dataView}
+                        StyledTableCell={StyledTableCell}
+                        StyledTableRow={StyledTableRow}
+                      />
+                    </>
+                  )}
                 </>
               )}
               {/* films table */}
-              {data?.films?.length > 0 && (
-                <Grid
-                  style={{
-                    marginTop: "50px",
-                    width: "100%",
-                    textAlign: "center",
-                  }}
-                >
-                  <span
-                    style={{
-                      color: light ? "blue" : "red",
-                      fontSize: "20px",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    Film Information
-                  </span>
-                  <FilmTable
-                    data={data}
-                    light={light}
-                    dataView={dataView}
-                    StyledTableCell={StyledTableCell}
-                    StyledTableRow={StyledTableRow}
-                  />
-                </Grid>
+              {!filmToggle && (
+                <>
+                  {data?.films?.length > 0 && (
+                    <Grid
+                      style={{
+                        marginTop: "50px",
+                        width: "100%",
+                        textAlign: "center",
+                      }}
+                    >
+                      <span
+                        style={{
+                          color: light ? "blue" : "red",
+                          fontSize: "20px",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        Film Information
+                      </span>
+                      <FilmTable
+                        data={data}
+                        light={light}
+                        dataView={dataView}
+                        StyledTableCell={StyledTableCell}
+                        StyledTableRow={StyledTableRow}
+                      />
+                    </Grid>
+                  )}
+                </>
               )}
               {/* starships table */}
-              {data?.starships?.length > 0 && (
-                <Grid
-                  style={{
-                    marginTop: "50px",
-                    width: "100%",
-                    textAlign: "center",
-                  }}
-                >
-                  <span
-                    style={{
-                      color: light ? "blue" : "red",
-                      fontSize: "20px",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    Starship Information
-                  </span>
-                  <ShipTable
-                    data={data}
-                    light={light}
-                    dataView={dataView}
-                    StyledTableCell={StyledTableCell}
-                    StyledTableRow={StyledTableRow}
-                  />
-                </Grid>
+              {!shipToggle && (
+                <>
+                  {data?.starships?.length > 0 && (
+                    <Grid
+                      style={{
+                        marginTop: "50px",
+                        width: "100%",
+                        textAlign: "center",
+                      }}
+                    >
+                      <span
+                        style={{
+                          color: light ? "blue" : "red",
+                          fontSize: "20px",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        Starship Information
+                      </span>
+                      <ShipTable
+                        data={data}
+                        light={light}
+                        dataView={dataView}
+                        StyledTableCell={StyledTableCell}
+                        StyledTableRow={StyledTableRow}
+                      />
+                    </Grid>
+                  )}
+                </>
               )}
               {/* vehicles table */}
-              {data?.vehicles?.length > 0 && (
-                <Grid
-                  style={{
-                    marginTop: "50px",
-                    width: "100%",
-                    textAlign: "center",
-                  }}
-                >
-                  <span
-                    style={{
-                      color: light ? "blue" : "red",
-                      fontSize: "20px",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    Vehicle Information
-                  </span>
-                  <VehicleTable
-                    data={data}
-                    light={light}
-                    capitalizeFirstLetter={capitalizeFirstLetter}
-                    dataView={dataView}
-                    StyledTableCell={StyledTableCell}
-                    StyledTableRow={StyledTableRow}
-                  />
-                </Grid>
+              {!vehicleToggle && (
+                <>
+                  {data?.vehicles?.length > 0 && (
+                    <Grid
+                      style={{
+                        marginTop: "50px",
+                        width: "100%",
+                        textAlign: "center",
+                      }}
+                    >
+                      <span
+                        style={{
+                          color: light ? "blue" : "red",
+                          fontSize: "20px",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        Vehicle Information
+                      </span>
+                      <VehicleTable
+                        data={data}
+                        light={light}
+                        capitalizeFirstLetter={capitalizeFirstLetter}
+                        dataView={dataView}
+                        StyledTableCell={StyledTableCell}
+                        StyledTableRow={StyledTableRow}
+                      />
+                    </Grid>
+                  )}
+                </>
               )}
             </>
           )}
         </Grid>
-        <ModeBtn light={light} setLight={setLight} dataView={dataView} />
+        <ModeBtn
+          light={light}
+          setLight={setLight}
+          dataView={dataView}
+          personData={data}
+        />
       </Grid>
     </div>
   );
