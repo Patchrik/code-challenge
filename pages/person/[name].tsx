@@ -28,7 +28,7 @@ import { getPersonDetails } from "../api/api";
 const StyledTableCell = withStyles((theme: Theme) =>
   createStyles({
     head: {
-      backgroundColor: theme.palette.action.hover,
+      backgroundColor: theme?.palette?.action?.hover,
     },
     body: {
       fontSize: 14,
@@ -41,7 +41,7 @@ const StyledTableRow = withStyles((theme: Theme) =>
   createStyles({
     root: {
       "&:nth-of-type(even)": {
-        backgroundColor: theme.palette.action.hover,
+        backgroundColor: theme?.palette?.action?.hover,
       },
     },
   })

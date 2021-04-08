@@ -49,7 +49,7 @@ const CharacterDetails = ({ light, data }: CharacterDetailsProps) => {
     <Grid direction="column" xs={5} item style={{}}>
       {data &&
         // map over returned data
-        data.map((person: PersonObject) => {
+        data?.map((person: PersonObject) => {
           //get personId
           const personUrlSections = person?.url.split("/").filter(Boolean);
           const personId = personUrlSections[personUrlSections.length - 1];
@@ -193,7 +193,7 @@ const CharacterDetails = ({ light, data }: CharacterDetailsProps) => {
                     </>
                   ) : null}
                   {/* maps over species component */}
-                  {person?.species.map((specie: string) => {
+                  {person?.species?.map((specie: string) => {
                     const speciesUrlSection = specie.split("/").filter(Boolean);
                     const speciesId =
                       speciesUrlSection[speciesUrlSection.length - 1];
@@ -233,7 +233,7 @@ const CharacterDetails = ({ light, data }: CharacterDetailsProps) => {
                         </Grid>
                       </Grid>
                       {/* maps over film component */}
-                      {person?.films.map((film: string) => {
+                      {person?.films?.map((film: string) => {
                         const filmUrlSections = film.split("/").filter(Boolean);
                         const filmId =
                           filmUrlSections[filmUrlSections.length - 1];
@@ -312,7 +312,7 @@ const CharacterDetails = ({ light, data }: CharacterDetailsProps) => {
                         </Grid>
                       </Grid>
                       {/* map over starships component */}
-                      {person?.starships.map((ship: string) => {
+                      {person?.starships?.map((ship: string) => {
                         const shipUrlSections = ship.split("/").filter(Boolean);
                         const shipId =
                           shipUrlSections[shipUrlSections.length - 1];

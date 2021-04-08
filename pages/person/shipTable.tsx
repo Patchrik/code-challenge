@@ -61,7 +61,7 @@ const ShipTable = ({
           </TableHead>
 
           {/* map over data / return table body */}
-          {data?.starships.map((ship: string) => {
+          {data?.starships?.map((ship: string) => {
             const shipUrlSections = ship.split("/").filter(Boolean);
             const shipId = shipUrlSections[shipUrlSections.length - 1];
             return (
