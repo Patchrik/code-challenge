@@ -46,7 +46,12 @@ const Search = ({ light, setSearch, status }: SearchProps) => {
         className={styles?.zIndex}
       >
         <FormControl
-          style={{ width: "100%", background: "white", borderRadius: "6px" }}
+          style={{
+            width: "100%",
+            background: "white",
+            borderRadius: "6px",
+            border: light ? "2px solid blue" : "2px solid red",
+          }}
         >
           <TextField
             type="input"
