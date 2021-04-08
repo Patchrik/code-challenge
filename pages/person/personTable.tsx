@@ -34,8 +34,8 @@ interface PersonTableProps {
   light: boolean;
   capitalizeFirstLetter: (value: string) => string;
   dataView: string;
-  StyledTableCell: any;
-  StyledTableRow: any;
+  StyledTableCell?: any;
+  StyledTableRow?: any;
 }
 
 const PersonTable = ({

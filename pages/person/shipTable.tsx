@@ -20,8 +20,8 @@ interface ShipTableProps {
   data: DataObject;
   light: boolean;
   dataView: string;
-  StyledTableCell: any;
-  StyledTableRow: any;
+  StyledTableCell?: any;
+  StyledTableRow?: any;
 }
 
 const ShipTable = ({
