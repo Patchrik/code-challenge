@@ -17,4 +17,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Contributors
 
-[Alex Rumsey](http://www.alexrumsey.dev)
+[Alex Rumsey](https://github.com/arumsey93) - [Website](http://www.alexrumsey.dev)
