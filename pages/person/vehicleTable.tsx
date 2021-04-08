@@ -6,6 +6,11 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  TableRow,
+  withStyles,
+  Theme,
+  createStyles,
+  TableCell,
 } from "@material-ui/core";
 //components
 import Vehicle from "../components/vehicle";
@@ -25,13 +30,34 @@ interface VehicleTableProps {
   StyledTableRow?: any;
 }
 
+//custom styled table cells
+const StyledTableCell = withStyles((theme: Theme) =>
+  createStyles({
+    head: {
+      backgroundColor: theme?.palette?.action?.hover,
+    },
+    body: {
+      fontSize: 14,
+    },
+  })
+)(TableCell);
+
+//custom styled table rows
+const StyledTableRow = withStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      "&:nth-of-type(even)": {
+        backgroundColor: theme?.palette?.action?.hover,
+      },
+    },
+  })
+)(TableRow);
+
 const VehicleTable = ({
   data,
   light,
   capitalizeFirstLetter,
   dataView,
-  StyledTableCell,
-  StyledTableRow,
 }: VehicleTableProps) => {
   // return vehicle table
   return (

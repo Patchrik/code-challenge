@@ -1,13 +1,6 @@
 import React from "react";
 //third party
-import {
-  Grid,
-  TableRow,
-  withStyles,
-  Theme,
-  createStyles,
-  TableCell,
-} from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import CachedIcon from "@material-ui/icons/Cached";
 //components
 import ModeBtn from "../modeBtn";
@@ -23,29 +16,6 @@ import style from "../../styles/Home.module.css";
 //api
 import { useQuery } from "react-query";
 import { getPersonDetails } from "../api/api";
-
-//custom styled table cells
-const StyledTableCell = withStyles((theme: Theme) =>
-  createStyles({
-    head: {
-      backgroundColor: theme?.palette?.action?.hover,
-    },
-    body: {
-      fontSize: 14,
-    },
-  })
-)(TableCell);
-
-//custom styled table rows
-const StyledTableRow = withStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      "&:nth-of-type(even)": {
-        backgroundColor: theme?.palette?.action?.hover,
-      },
-    },
-  })
-)(TableRow);
 
 const PersonDetails = () => {
   //define contexts
@@ -116,8 +86,6 @@ const PersonDetails = () => {
                         light={light}
                         capitalizeFirstLetter={capitalizeFirstLetter}
                         dataView={dataView}
-                        StyledTableCell={StyledTableCell}
-                        StyledTableRow={StyledTableRow}
                       />
                     </>
                   )}
@@ -147,8 +115,6 @@ const PersonDetails = () => {
                         data={data}
                         light={light}
                         dataView={dataView}
-                        StyledTableCell={StyledTableCell}
-                        StyledTableRow={StyledTableRow}
                       />
                     </Grid>
                   )}
@@ -178,8 +144,6 @@ const PersonDetails = () => {
                         data={data}
                         light={light}
                         dataView={dataView}
-                        StyledTableCell={StyledTableCell}
-                        StyledTableRow={StyledTableRow}
                       />
                     </Grid>
                   )}
@@ -210,8 +174,6 @@ const PersonDetails = () => {
                         light={light}
                         capitalizeFirstLetter={capitalizeFirstLetter}
                         dataView={dataView}
-                        StyledTableCell={StyledTableCell}
-                        StyledTableRow={StyledTableRow}
                       />
                     </Grid>
                   )}
