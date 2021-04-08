@@ -27,6 +27,8 @@ const Home = () => {
     }
   );
 
+  console.log({ data });
+
   // return if error
   if (error) return "An error has occurred: " + error.message;
 
@@ -38,7 +40,7 @@ const Home = () => {
         {/* dark/light btn */}
         <ModeBtn light={light} setLight={setLight} />
       </Grid>
-      {data && (
+      {data && data.length > 0 && (
         <Grid
           direction="row"
           container
@@ -53,7 +55,23 @@ const Home = () => {
           <CharacterDetails light={light} data={data} />
         </Grid>
       )}
-      {!data && (
+      {/* no search results */}
+      {data && data.length === 0 && (
+        <Grid
+          container
+          direction="row"
+          xs={12}
+          style={{
+            color: light ? "blue" : "red",
+            paddingLeft: "50px",
+            fontSize: "18px",
+          }}
+        >
+          No character matched this search. Check spelling, and try again.
+        </Grid>
+      )}
+      {/* crawl text */}
+      {!data && search === "" && (
         <Grid direction="row" container justify="center" alignContent="center">
           <StarText />
         </Grid>
