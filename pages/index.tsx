@@ -27,8 +27,6 @@ const Home = () => {
     }
   );
 
-  console.log({ data });
-
   // return if error
   if (error) return "An error has occurred: " + error.message;
 
