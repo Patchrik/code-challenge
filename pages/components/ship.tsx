@@ -1,6 +1,6 @@
 import React from "react";
 //third party
-import { Grid, TableBody, TableCell } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 //api
 import { useQuery } from "react-query";
 import { getPersonDetails } from "../api/api";
@@ -13,9 +13,17 @@ interface ShipProps {
   id: string;
   light: boolean;
   dataView: string;
+  StyledTableCell: any;
+  StyledTableRow: any;
 }
 
-const Ship = ({ id, light, dataView }: ShipProps) => {
+const Ship = ({
+  id,
+  light,
+  dataView,
+  StyledTableCell,
+  StyledTableRow,
+}: ShipProps) => {
   // get ships query
   const { data, status, error } = useQuery(`ship-${id}`, () =>
     getPersonDetails("starships", id, error)
@@ -67,29 +75,37 @@ const Ship = ({ id, light, dataView }: ShipProps) => {
           </Grid>
         </Grid>
       ) : (
-        <TableBody>
-          <TableCell>{data?.name ? data?.name : "Uknown"}</TableCell>
-          <TableCell>{data?.model ? data?.model : "Uknown"}</TableCell>
-          <TableCell>
+        <StyledTableRow>
+          <StyledTableCell>
+            {data?.name ? data?.name : "Uknown"}
+          </StyledTableCell>
+          <StyledTableCell>
+            {data?.model ? data?.model : "Uknown"}
+          </StyledTableCell>
+          <StyledTableCell>
             {data?.starship_class ? data?.starship_class : "Uknown"}
-          </TableCell>
-          <TableCell>
+          </StyledTableCell>
+          <StyledTableCell>
             {data?.hyperdrive_rating ? data?.hyperdrive_rating : "Uknown"}
-          </TableCell>
-          <TableCell>
+          </StyledTableCell>
+          <StyledTableCell>
             {data?.max_atmosphering_speed
               ? data?.max_atmosphering_speed
               : "Uknown"}
-          </TableCell>
-          <TableCell>{data?.length ? data?.length : "Uknown"}</TableCell>
-          <TableCell>
+          </StyledTableCell>
+          <StyledTableCell>
+            {data?.length ? data?.length : "Uknown"}
+          </StyledTableCell>
+          <StyledTableCell>
             {data?.passengers ? data?.passengers : "Uknown"}
-          </TableCell>
-          <TableCell>{data?.crew ? data?.crew : "Uknown"}</TableCell>
-          <TableCell>
+          </StyledTableCell>
+          <StyledTableCell>
+            {data?.crew ? data?.crew : "Uknown"}
+          </StyledTableCell>
+          <StyledTableCell>
             {data?.manufacturer ? data?.manufacturer : "Uknown"}
-          </TableCell>
-        </TableBody>
+          </StyledTableCell>
+        </StyledTableRow>
       )}
     </>
   );

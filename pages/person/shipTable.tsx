@@ -6,7 +6,6 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  TableCell,
 } from "@material-ui/core";
 //components
 import Ship from "../components/ship";
@@ -21,9 +20,17 @@ interface ShipTableProps {
   data: DataObject;
   light: boolean;
   dataView: string;
+  StyledTableCell: any;
+  StyledTableRow: any;
 }
 
-const ShipTable = ({ data, light, dataView }: ShipTableProps) => {
+const ShipTable = ({
+  data,
+  light,
+  dataView,
+  StyledTableCell,
+  StyledTableRow,
+}: ShipTableProps) => {
   // return ship table
   return (
     <Grid
@@ -41,15 +48,15 @@ const ShipTable = ({ data, light, dataView }: ShipTableProps) => {
           {/* table header */}
           <TableHead>
             <TableRow>
-              <TableCell>Name</TableCell>
-              <TableCell>Model</TableCell>
-              <TableCell>Class</TableCell>
-              <TableCell>Hyperdrive Rating</TableCell>
-              <TableCell>Max Speed</TableCell>
-              <TableCell>Length</TableCell>
-              <TableCell>Passengers</TableCell>
-              <TableCell>Crew</TableCell>
-              <TableCell>Manufacturer</TableCell>
+              <StyledTableCell>Name</StyledTableCell>
+              <StyledTableCell>Model</StyledTableCell>
+              <StyledTableCell>Class</StyledTableCell>
+              <StyledTableCell>Hyperdrive Rating</StyledTableCell>
+              <StyledTableCell>Max Speed</StyledTableCell>
+              <StyledTableCell>Length</StyledTableCell>
+              <StyledTableCell>Passengers</StyledTableCell>
+              <StyledTableCell>Crew</StyledTableCell>
+              <StyledTableCell>Manufacturer</StyledTableCell>
             </TableRow>
           </TableHead>
 
@@ -63,6 +70,8 @@ const ShipTable = ({ data, light, dataView }: ShipTableProps) => {
                 light={light}
                 key={`Ship-${shipId}`}
                 dataView={dataView}
+                StyledTableCell={StyledTableCell}
+                StyledTableRow={StyledTableRow}
               />
             );
           })}

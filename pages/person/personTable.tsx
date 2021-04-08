@@ -7,6 +7,9 @@ import {
   TableHead,
   TableRow,
   TableBody,
+  withStyles,
+  Theme,
+  createStyles,
   TableCell,
 } from "@material-ui/core";
 //components
@@ -31,6 +34,8 @@ interface PersonTableProps {
   light: boolean;
   capitalizeFirstLetter: (value: string) => string;
   dataView: string;
+  StyledTableCell: any;
+  StyledTableRow: any;
 }
 
 const PersonTable = ({
@@ -38,6 +43,8 @@ const PersonTable = ({
   light,
   capitalizeFirstLetter,
   dataView,
+  StyledTableCell,
+  StyledTableRow,
 }: PersonTableProps) => {
   // return person table
   return (
@@ -56,52 +63,52 @@ const PersonTable = ({
           {/* table header */}
           <TableHead>
             <TableRow>
-              <TableCell>Name</TableCell>
-              <TableCell>Birth Year</TableCell>
-              <TableCell>Height</TableCell>
-              <TableCell>Mass</TableCell>
-              <TableCell>Eye Color</TableCell>
-              <TableCell>Hair Color</TableCell>
-              <TableCell>Skin Color</TableCell>
-              <TableCell>Species</TableCell>
+              <StyledTableCell>Name</StyledTableCell>
+              <StyledTableCell>Birth Year</StyledTableCell>
+              <StyledTableCell>Height</StyledTableCell>
+              <StyledTableCell>Mass</StyledTableCell>
+              <StyledTableCell>Eye Color</StyledTableCell>
+              <StyledTableCell>Hair Color</StyledTableCell>
+              <StyledTableCell>Skin Color</StyledTableCell>
+              <StyledTableCell>Species</StyledTableCell>
             </TableRow>
           </TableHead>
 
           {/* table body */}
           <TableBody>
-            <TableRow key={data?.url}>
-              <TableCell>
+            <StyledTableRow key={data?.url}>
+              <StyledTableCell>
                 {data?.name ? capitalizeFirstLetter(data?.name) : "Unknown"}
-              </TableCell>
-              <TableCell>
+              </StyledTableCell>
+              <StyledTableCell>
                 {data?.birth_year
                   ? capitalizeFirstLetter(data?.birth_year)
                   : "Unknown"}{" "}
-              </TableCell>
-              <TableCell>
+              </StyledTableCell>
+              <StyledTableCell>
                 {data?.height ? capitalizeFirstLetter(data?.height) : "Unknown"}{" "}
-              </TableCell>
-              <TableCell>
+              </StyledTableCell>
+              <StyledTableCell>
                 {data?.mass ? capitalizeFirstLetter(data?.mass) : "Unknown"}{" "}
-              </TableCell>
-              <TableCell>
+              </StyledTableCell>
+              <StyledTableCell>
                 {data?.eye_color
                   ? capitalizeFirstLetter(data?.eye_color)
                   : "Unknown"}{" "}
-              </TableCell>
-              <TableCell>
+              </StyledTableCell>
+              <StyledTableCell>
                 {data?.hair_color
                   ? capitalizeFirstLetter(data?.hair_color)
                   : "Unknown"}{" "}
-              </TableCell>
-              <TableCell>
+              </StyledTableCell>
+              <StyledTableCell>
                 {data?.skin_color
                   ? capitalizeFirstLetter(data?.skin_color)
                   : "Unknown"}{" "}
-              </TableCell>
+              </StyledTableCell>
               {/* map over species if length > 0 */}
               {data?.species?.length === 0 ? (
-                <TableCell>Human</TableCell>
+                <StyledTableCell>Human</StyledTableCell>
               ) : null}
               {data?.species?.length > 0 &&
                 data?.species.map((specie: any) => {
@@ -112,7 +119,7 @@ const PersonTable = ({
                     <Species id={speciesId} light={light} dataView={dataView} />
                   );
                 })}
-            </TableRow>
+            </StyledTableRow>
           </TableBody>
         </Table>
       </TableContainer>

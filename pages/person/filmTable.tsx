@@ -6,7 +6,6 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  TableCell,
 } from "@material-ui/core";
 //components
 import Film from "../components/film";
@@ -21,9 +20,17 @@ interface FilmTableProps {
   data: DataObject;
   light: boolean;
   dataView: string;
+  StyledTableCell: any;
+  StyledTableRow: any;
 }
 
-const FilmTable = ({ data, light, dataView }: FilmTableProps) => {
+const FilmTable = ({
+  data,
+  light,
+  dataView,
+  StyledTableCell,
+  StyledTableRow,
+}: FilmTableProps) => {
   // return film table
   return (
     <Grid
@@ -41,11 +48,11 @@ const FilmTable = ({ data, light, dataView }: FilmTableProps) => {
           {/* table header */}
           <TableHead>
             <TableRow>
-              <TableCell>Title</TableCell>
-              <TableCell>Director</TableCell>
-              <TableCell>Producer(s)</TableCell>
-              <TableCell>Release Date</TableCell>
-              <TableCell>Episode</TableCell>
+              <StyledTableCell>Title</StyledTableCell>
+              <StyledTableCell>Director</StyledTableCell>
+              <StyledTableCell>Producer(s)</StyledTableCell>
+              <StyledTableCell>Release Date</StyledTableCell>
+              <StyledTableCell>Episode</StyledTableCell>
             </TableRow>
           </TableHead>
 
@@ -59,6 +66,8 @@ const FilmTable = ({ data, light, dataView }: FilmTableProps) => {
                 light={light}
                 key={`Film-${filmId}`}
                 dataView={dataView}
+                StyledTableCell={StyledTableCell}
+                StyledTableRow={StyledTableRow}
               />
             );
           })}

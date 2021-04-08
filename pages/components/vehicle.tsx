@@ -1,6 +1,6 @@
 import React from "react";
 //third party
-import { Grid, TableBody, TableCell } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 //api
 import { useQuery } from "react-query";
 import { getPersonDetails } from "../api/api";
@@ -14,9 +14,18 @@ interface ShipProps {
   light: boolean;
   dataView: string;
   capitalizeFirstLetter: (value: string) => string;
+  StyledTableCell: any;
+  StyledTableRow: any;
 }
 
-const Vehicle = ({ id, light, dataView, capitalizeFirstLetter }: ShipProps) => {
+const Vehicle = ({
+  id,
+  light,
+  dataView,
+  capitalizeFirstLetter,
+  StyledTableCell,
+  StyledTableRow,
+}: ShipProps) => {
   // get ships query
   const { data, status, error } = useQuery(`vehicle-${id}`, () =>
     getPersonDetails("vehicles", id, error)
@@ -39,39 +48,43 @@ const Vehicle = ({ id, light, dataView, capitalizeFirstLetter }: ShipProps) => {
           />
         </Grid>
       ) : dataView === "details" ? null : (
-        <TableBody>
-          <TableCell>
+        <StyledTableRow>
+          <StyledTableCell>
             {data?.name ? capitalizeFirstLetter(data?.name) : "Uknown"}
-          </TableCell>
-          <TableCell>
+          </StyledTableCell>
+          <StyledTableCell>
             {data?.model ? capitalizeFirstLetter(data?.model) : "Uknown"}
-          </TableCell>
-          <TableCell>
+          </StyledTableCell>
+          <StyledTableCell>
             {data?.vehicle_class
               ? capitalizeFirstLetter(data?.vehicle_class)
               : "Uknown"}
-          </TableCell>
-          <TableCell>
+          </StyledTableCell>
+          <StyledTableCell>
             {data?.cost_in_credits
               ? capitalizeFirstLetter(data?.cost_in_credits)
               : "Uknown"}
-          </TableCell>
-          <TableCell>
+          </StyledTableCell>
+          <StyledTableCell>
             {data?.max_atmosphering_speed
               ? data?.max_atmosphering_speed
               : "Uknown"}
-          </TableCell>
-          <TableCell>{data?.length ? data?.length : "Uknown"}</TableCell>
-          <TableCell>
+          </StyledTableCell>
+          <StyledTableCell>
+            {data?.length ? data?.length : "Uknown"}
+          </StyledTableCell>
+          <StyledTableCell>
             {data?.passengers ? data?.passengers : "Uknown"}
-          </TableCell>
-          <TableCell>{data?.crew ? data?.crew : "Uknown"}</TableCell>
-          <TableCell>
+          </StyledTableCell>
+          <StyledTableCell>
+            {data?.crew ? data?.crew : "Uknown"}
+          </StyledTableCell>
+          <StyledTableCell>
             {data?.manufacturer
               ? capitalizeFirstLetter(data?.manufacturer)
               : "Uknown"}
-          </TableCell>
-        </TableBody>
+          </StyledTableCell>
+        </StyledTableRow>
       )}
     </>
   );

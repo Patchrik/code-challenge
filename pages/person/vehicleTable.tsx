@@ -6,7 +6,6 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  TableCell,
 } from "@material-ui/core";
 //components
 import Vehicle from "../components/vehicle";
@@ -22,6 +21,8 @@ interface VehicleTableProps {
   light: boolean;
   capitalizeFirstLetter: (value: string) => string;
   dataView: string;
+  StyledTableCell: any;
+  StyledTableRow: any;
 }
 
 const VehicleTable = ({
@@ -29,6 +30,8 @@ const VehicleTable = ({
   light,
   capitalizeFirstLetter,
   dataView,
+  StyledTableCell,
+  StyledTableRow,
 }: VehicleTableProps) => {
   // return vehicle table
   return (
@@ -47,15 +50,15 @@ const VehicleTable = ({
           {/* table header */}
           <TableHead>
             <TableRow>
-              <TableCell>Name</TableCell>
-              <TableCell>Model</TableCell>
-              <TableCell>Class</TableCell>
-              <TableCell>Cost</TableCell>
-              <TableCell>Max Speed</TableCell>
-              <TableCell>Length</TableCell>
-              <TableCell>Passengers</TableCell>
-              <TableCell>Crew</TableCell>
-              <TableCell>Manufacturer</TableCell>
+              <StyledTableCell>Name</StyledTableCell>
+              <StyledTableCell>Model</StyledTableCell>
+              <StyledTableCell>Class</StyledTableCell>
+              <StyledTableCell>Cost</StyledTableCell>
+              <StyledTableCell>Max Speed</StyledTableCell>
+              <StyledTableCell>Length</StyledTableCell>
+              <StyledTableCell>Passengers</StyledTableCell>
+              <StyledTableCell>Crew</StyledTableCell>
+              <StyledTableCell>Manufacturer</StyledTableCell>
             </TableRow>
           </TableHead>
 
@@ -70,6 +73,8 @@ const VehicleTable = ({
                 key={`Vehicle-${vehicleId}`}
                 dataView={dataView}
                 capitalizeFirstLetter={capitalizeFirstLetter}
+                StyledTableCell={StyledTableCell}
+                StyledTableRow={StyledTableRow}
               />
             );
           })}
