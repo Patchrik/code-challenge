@@ -11,8 +11,6 @@ import MotorcycleIcon from "@material-ui/icons/Motorcycle";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import styles from "../styles/Home.module.css";
-//context
-import { usePerson } from "../context/personContext";
 
 // btn interface
 interface ModeProps {
@@ -20,6 +18,14 @@ interface ModeProps {
   setLight: (value: boolean) => void;
   dataView?: string;
   personData?: PersonDataType;
+  personToggle: boolean;
+  setPersonToggle: (value: boolean) => Promise<void>;
+  filmToggle: boolean;
+  setFilmToggle: (value: boolean) => Promise<void>;
+  shipToggle: boolean;
+  setShipToggle: (value: boolean) => Promise<void>;
+  vehicleToggle: boolean;
+  setVehicleToggle: (value: boolean) => Promise<void>;
 }
 
 //types
@@ -29,21 +35,23 @@ type PersonDataType = {
   vehicles: any[];
 };
 
-const ModeBtn = ({ light, setLight, dataView, personData }: ModeProps) => {
+const ModeBtn = ({
+  light,
+  setLight,
+  dataView,
+  personData,
+  personToggle,
+  setPersonToggle,
+  filmToggle,
+  setFilmToggle,
+  shipToggle,
+  setShipToggle,
+  vehicleToggle,
+  setVehicleToggle,
+}: ModeProps) => {
   const [hideBtns, setHideBtns] = React.useState<boolean>(false);
   //define router
   const router = useRouter();
-  //context defs
-  const {
-    personToggle,
-    setPersonToggle,
-    filmToggle,
-    setFilmToggle,
-    shipToggle,
-    setShipToggle,
-    vehicleToggle,
-    setVehicleToggle,
-  } = usePerson();
 
   return (
     <Grid

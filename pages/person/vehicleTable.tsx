@@ -25,8 +25,6 @@ interface VehicleTableProps {
   light: boolean;
   capitalizeFirstLetter: (value: string) => string;
   dataView: string;
-  StyledTableCell?: any;
-  StyledTableRow?: any;
 }
 
 //custom styled table cells

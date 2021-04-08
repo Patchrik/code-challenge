@@ -20,14 +20,12 @@ import { getPersonDetails } from "../api/api";
 const PersonDetails = () => {
   //define contexts
   const { light, setLight } = useTheme();
-  const {
-    personId,
-    personToggle,
-    filmToggle,
-    shipToggle,
-    vehicleToggle,
-  } = usePerson();
+  const { personId } = usePerson();
   const [dataView] = React.useState<string>("table");
+  const [personToggle, setPersonToggle] = React.useState<boolean>(false);
+  const [filmToggle, setFilmToggle] = React.useState<boolean>(false);
+  const [shipToggle, setShipToggle] = React.useState<boolean>(false);
+  const [vehicleToggle, setVehicleToggle] = React.useState<boolean>(false);
 
   //person query
   const { data, status, error } = useQuery(
@@ -187,6 +185,14 @@ const PersonDetails = () => {
           setLight={setLight}
           dataView={dataView}
           personData={data}
+          personToggle={personToggle}
+          setPersonToggle={setPersonToggle}
+          filmToggle={filmToggle}
+          setFilmToggle={setFilmToggle}
+          shipToggle={shipToggle}
+          setShipToggle={setShipToggle}
+          vehicleToggle={vehicleToggle}
+          setVehicleToggle={setVehicleToggle}
         />
       </Grid>
     </div>
