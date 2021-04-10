@@ -34,7 +34,7 @@ const Search = ({ light, setSearch, status }: SearchProps) => {
   return (
     <>
       {/* search bar */}
-      <Grid
+      {/* <Grid
         direction="column"
         container
         xs={6}
@@ -71,7 +71,7 @@ const Search = ({ light, setSearch, status }: SearchProps) => {
             onChange={(event) => handleCharacterSearch(event?.target?.value)}
           />
         </FormControl>
-      </Grid>
+      </Grid> */}
       {/* custom loading icon */}
       <Grid
         direction="column"
