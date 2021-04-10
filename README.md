@@ -6,8 +6,12 @@ First, run the development server:
 
 ```bash
 # clone the repository
-$ git clone git@github.com:arumsey93/SWAPI.git
+git clone git@github.com:arumsey93/SWAPI.git
 # then
+yarn install
+# or
+npm install
+# finally
 npm run dev
 # or
 yarn dev
