@@ -17,6 +17,15 @@ npm run dev
 yarn dev
 ```
 
+## Environment Variables
+
+```bash
+# from root directory
+touch .env.local
+# create the SWAPI url
+SWAPI=https://www.example.com/
+```
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Deployed
