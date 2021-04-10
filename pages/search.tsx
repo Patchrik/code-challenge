@@ -45,7 +45,7 @@ const Search = ({ light, setSearch, status }: SearchProps) => {
         alignContent="flex-start"
         className={styles?.zIndex}
       >
-        {/* <FormControl
+        <FormControl
           style={{
             width: "100%",
             background: "white",
@@ -70,7 +70,7 @@ const Search = ({ light, setSearch, status }: SearchProps) => {
             }}
             onChange={(event) => handleCharacterSearch(event?.target?.value)}
           />
-        </FormControl> */}
+        </FormControl>
       </Grid>
       {/* custom loading icon */}
       <Grid
