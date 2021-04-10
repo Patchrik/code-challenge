@@ -52,25 +52,7 @@ const Search = ({ light, setSearch, status }: SearchProps) => {
             borderRadius: "6px",
             border: light ? "2px solid blue" : "2px solid red",
           }}
-        >
-          <TextField
-            type="input"
-            name="characterSearch"
-            variant="outlined"
-            placeholder="Start Typing to Search for a Star Wars Character..."
-            InputProps={{
-              endAdornment: (
-                <InputAdornment
-                  position="end"
-                  style={{ color: light ? "blue" : "red" }}
-                >
-                  <SearchIcon />
-                </InputAdornment>
-              ),
-            }}
-            onChange={(event) => handleCharacterSearch(event?.target?.value)}
-          />
-        </FormControl>
+        ></FormControl>
       </Grid>
       {/* custom loading icon */}
       <Grid
