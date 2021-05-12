@@ -6,7 +6,7 @@ First, run the development server:
 
 ```bash
 # clone the repository
-git clone git@github.com:arumsey93/SWAPI.git
+git@github.com:arumsey93/code-challenge.git
 # then
 yarn install
 # or
