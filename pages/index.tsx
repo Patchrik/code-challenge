@@ -5,7 +5,6 @@ import { useTheme } from "../context/themeContext";
 import Search from "./search";
 import ModeBtn from "./modeBtn";
 import CharacterDetails from "./character/characterDetails";
-import StarText from "./starText";
 //third party
 import { Grid } from "@material-ui/core";
 //styles
@@ -19,11 +18,11 @@ const Home = () => {
   const [search, setSearch] = React.useState<string>("");
 
   //useQuery for character data
-  const { data, error, status }: any = useQuery(
+  const { data }: any = useQuery(
     ["characterSearch", { search }],
-    () => getSearchPerson(search),
+    () => getSearchPerson(),
     {
-      enabled: !!search,
+      enabled: !search,
     }
   );
 
@@ -66,12 +65,6 @@ const Home = () => {
           }}
         >
           No character matched this search. Check spelling, and try again.
-        </Grid>
-      )}
-      {/* crawl text */}
-      {!data && search === "" && (
-        <Grid direction="row" container justify="center" alignContent="center">
-          <StarText />
         </Grid>
       )}
     </div>
