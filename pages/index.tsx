@@ -18,7 +18,7 @@ const Home = () => {
 	const [search, setSearch] = React.useState<string>("");
 
 	//useQuery for character data
-	const { data }: any = useQuery(
+	const { data, status }: any = useQuery(
 		["characterSearch", { search }],
 		() => getSearchPerson(search),
 		{
@@ -27,7 +27,7 @@ const Home = () => {
 	);
 
 	// return if error
-	if (error) return "An error has occurred: " + error.message;
+	if (status === "error") return "An error has occurred: " + status;
 
 	return (
 		<div className={styles.imgContainer}>
