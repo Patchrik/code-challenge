@@ -19,10 +19,15 @@ const Home = () => {
 
 	//useQuery for character data
 	const { data, status }: any = useQuery(
-		["characterSearch", { search }],
+		// The search was originally wrapped in {} making it an object? I'm pretty sure that was wrong but not entirely
+		// still reading about useQuery. Seems like the useQuery hook is almost like a useEffect in that you can make it fire
+		// when a dependency (search in this case) changes?
+		["characterSearch", search ],
 		() => getSearchPerson(search),
 		{
-			enabled: !search,
+			enabled: !!search,
+			// Below was the first attempt that worked. I still like this better, in my mind it makes more sense. because I haven't used double bangs/NOTS before.
+			// enabled: Boolean(search);
 		}
 	);
 
